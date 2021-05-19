@@ -1,6 +1,6 @@
 const { Router } = require("express");
 
-const { getAllNotes, getSingleNote } = require("../controllers/restaurants");
+const { getAllNotes, getSingleNote } = require("../controllers/notes");
 
 const router = Router();
 
