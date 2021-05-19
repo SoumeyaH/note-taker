@@ -1,14 +1,15 @@
-const getStaticFilePath = require("../utils/getStaticFile");
+const getStaticFilePath = require("../utils/getStaticFilePath");
 
 const renderHomePage = (req, res) => {
-  console.log("hello");
-  // const filePath = getStaticFilePath("index");
+  const filePath = getStaticFilePath("index");
 
-  // res.sendFile(filePath);
+  res.sendFile(filePath);
 };
 
 const renderNotesPage = (req, res) => {
-  console.log("hello");
+  const filePath = getStaticFilePath("notes");
+
+  res.sendFile(filePath);
 };
 
 module.exports = { renderHomePage, renderNotesPage };
