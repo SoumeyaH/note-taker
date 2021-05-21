@@ -3,7 +3,7 @@ const cors = require("cors");
 
 const { htmlRoutes, apiRoutes } = require("./routes/allRoutes");
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
@@ -18,5 +18,3 @@ app.use("/", htmlRoutes);
 app.listen(PORT, () => {
   console.log(`Listening at http://localhost:${PORT}`);
 });
-
-// using id - add to req body
