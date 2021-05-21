@@ -9,19 +9,27 @@ const {
 
 const getAllNotes = (req, res) => {
   const data = getFromDatabase();
-  console.log(data);
   res.json(data);
 };
 
 const saveNote = (req, res) => {
   // get note from req.body
+  const note = req.body;
+
   // add id
-  //writeToDatabase
-  // res.json
+  note.id = uuid.v4();
+  console.log(note);
+
+  const data = getFromDatabase();
+  console.log(data, typeof data);
+  data.push(note);
+  console.log(data);
+  writeToDatabase(JSON.stringify(data));
+  res.json(data);
 };
 
 const deleteNote = (req, res) => {
-  // get data - getFromDatabase
+  // get data = getFromDatabase
   //get id  req.params.id
   // filter by id not match return
   //writeToDatabase
