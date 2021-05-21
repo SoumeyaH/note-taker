@@ -13,27 +13,31 @@ const getAllNotes = (req, res) => {
 };
 
 const saveNote = (req, res) => {
-  // get note from req.body
   const note = req.body;
-
-  // add id
   note.id = uuid.v4();
-  console.log(note);
 
   const data = getFromDatabase();
-  console.log(data, typeof data);
+
   data.push(note);
-  console.log(data);
-  writeToDatabase(JSON.stringify(data));
+
+  writeToDatabase(data);
   res.json(data);
 };
 
 const deleteNote = (req, res) => {
-  // get data = getFromDatabase
-  //get id  req.params.id
+  const data = getFromDatabase();
+  const noteID = req.params.id;
+  console.log(data);
   // filter by id not match return
   //writeToDatabase
   // res.json
+
+  const isDeleted = (each) => each.id !== noteID;
+
+  const notesArray = data.filter(isDeleted);
+
+  writeToDatabase(notesArray);
+  res.json(notesArray);
 };
 
 module.exports = { getAllNotes, saveNote, deleteNote };
